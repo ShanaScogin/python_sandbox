@@ -26,14 +26,11 @@ gouda = pd.DataFrame(data.target, columns=["MEDV"]) # this means DV apparently
 
 ## Run the model without a constant
 import statsmodels.api as sm
-X = df["RM"]
-y = gouda["MEDV"] # this just seems like an unnecessary step
-cheese = sm.OLS(y, X).fit()
-predictions = cheese.predict(X) # make the predictions by the model
+X = df["RM"] # having the separate X and y does seem to help readability
+y = gouda["MEDV"]
+model_ = sm.OLS(y, X).fit()
+predictions = model_.predict(X) # make the predictions by the model
 
 ## Print out the stats
-print(cheese.summary()) # this prints now - not sure why this needs the print()
-
-## Test without making new objects
-bri = sm.OLS(gouda["MEDV"], df["RM"]).fit() # so don't have to make the objs
-print(bri.summary()) # so this doesn't use the predictions
+print(model_.summary())
+print(predictions)
