@@ -18,6 +18,8 @@ through a list of links to save the text from each link. A version of the first
 half of this code that uses user input can be found in 'user_input_scrape'
 '''
 
+################ Scraping ####################
+
 import urllib.request
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -40,7 +42,7 @@ time.sleep(5) # let's not overwhelm the site...
 page = BeautifulSoup(browser.page_source, 'html.parser')
 
 # beautiful the code to check it out
-print(page.prettify()) # this step can help since each website has diff tags
+# print(page.prettify()) # this step can help since each website has diff tags
 
 # parse and extract data
 links = page.select("a.gs-title")
